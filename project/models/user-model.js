@@ -62,7 +62,35 @@ module.exports ={
 			}
 		});
 	},
+
+	GetOrderById:function(id,callback)
+	{
+		var sql = "select * from takeaway where id =" +id;
+		db.getResults(sql,function(result)
+		{
+           if(result.length > 0){
+				callback(result[0]);
+			}else{
+				callback([]);
+			}
+
+		});
+
+	},
+	orderdelete:function(id,callback)
+	{
+		var sql = "delete from takeaway where id ="+id;
+		db.execute(sql, function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
 	
+	},
+
+
 	delete: function(id, callback){
 		var sql = "delete from users where id="+id;
 		db.execute(sql, function(status){

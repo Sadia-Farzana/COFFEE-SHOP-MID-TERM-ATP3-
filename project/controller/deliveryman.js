@@ -8,10 +8,29 @@ router.get('/takeaway',function(req,res)
 	userModel.takeaway(function(results)
 	{
        console.log(results);
-       res.render('deliveryman',{userList : results, username:req.session.username});
+       res.render('deliveryman/index',{userList : results, username:req.session.username});
 	});
 });
 
+router.get('/Reject/:id',function(req,res)
+{
+  userModel.GetOrderById(req.params.id, function(result){
+		res.render('deliveryman/orderdelete', {user: result});
+
+		});
+
+});
+
+router.post('/Reject/:id', function(req, res){
+
+	userModel.orderdelete(req.params.id, function(status){
+		if(status){
+			res.redirect('/deliveryman/takeaway');
+		}else{
+			res.redirect('/home');
+		}
+	});
+});
 
 router.get('/editProfile/:id', function(req, res){
 

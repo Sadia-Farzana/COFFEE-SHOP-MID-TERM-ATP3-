@@ -54,16 +54,25 @@
     			<th>Username</th><td><%= userList[i].username %></td>
 				</tr>
 			<tr>
-    			<th>Orderid</th><td><%= userList[i].orderid %></td><td>
+    			<th>Orderid</th><td><%= userList[i].orderid %></td>
     		</tr>
         <tr>
           <th>Address</th><td><%= userList[i].address %></td><td>
         </tr>
         <tr>
-          <td><a href="/home">Back</a>|
-        <a href="/logout">Logout</a></td>
+          <th>Time</th><td><%= userList[i].Time%></td><td>
         </tr>
+        <tr>
+      
+        <a href="Reject/<%= userList[i].id %>">Reject Order</a></td>
+        </tr>
+        
 				</table>
+         <tr>
+      <td>
+        <a href="Reject/<%= userList[i].id %>">Accept Order</a></td>
+        </tr>
+        
 				</fieldset>
     		<% } %>
 
