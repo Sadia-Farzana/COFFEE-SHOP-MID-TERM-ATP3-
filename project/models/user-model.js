@@ -48,7 +48,42 @@ module.exports ={
   },
 
   takeaway:function(callback){
-		var sql = "select * from takeaway";
+		var sql = "select * from takeaway where status=0";
+		db.getResults(sql,function(results)
+		{
+
+			if(results.length > 0)
+			{
+				callback(results);
+			}
+			else
+			{
+				callback([]);
+			}
+		});
+	},
+
+  takeawayaccept:function(id,callback){
+
+
+             var sql = "update status=1,dusername= where id="+id;
+		db.getResults(sql,function(results)
+		{
+
+			if(results.length > 0)
+			{
+				callback(results);
+			}
+			else
+			{
+				callback([]);
+			}
+		});
+
+
+
+
+		var sql = "select * from takeaway where status=1";
 		db.getResults(sql,function(results)
 		{
 

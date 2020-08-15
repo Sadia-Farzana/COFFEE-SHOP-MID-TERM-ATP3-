@@ -12,6 +12,15 @@ router.get('/takeaway',function(req,res)
 	});
 });
 
+router.get('/Accept/:id',function(req,res)
+{
+  userModel.takeawayaccept(req.params.id, function(result){
+		res.render('deliveryman/Acceptlist', {user: result,username:req.session.username});
+
+		});
+
+});
+
 router.get('/Reject/:id',function(req,res)
 {
   userModel.GetOrderById(req.params.id, function(result){

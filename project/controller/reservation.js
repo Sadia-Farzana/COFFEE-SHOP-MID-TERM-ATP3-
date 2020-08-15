@@ -10,7 +10,7 @@ var router = express.Router();
 
 router.post('/',function(req,res)
 {
-   var reservation = {
+  var reservation = {
    	name : req.body.name,
    	date : req.body.date,
    	time : req.body.time,
@@ -18,9 +18,14 @@ router.post('/',function(req,res)
    	type : req.body.type,
    	contactinfo : req.body.contactinfo,
    	message : req.body.message
+
+      
    }
 
-
+/*if( !name || !date || !time || !party || !type || !contactinfo || !message)
+      {
+         return res.send('Please Fill up All the Fields');
+      }*/
  
  userModel.reservation(reservation,function(status)
  {
