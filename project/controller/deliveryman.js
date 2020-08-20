@@ -14,8 +14,28 @@ router.get('/takeaway',function(req,res)
 
 router.get('/Accept/:id',function(req,res)
 {
-  userModel.takeawayaccept(req.params.id, function(result){
-		res.render('deliveryman/Acceptlist', {user: result,username:req.session.username});
+
+
+	var user = {
+  	username 	: req.session.username,
+	id 			: req.params.id
+	
+	}
+  userModel.takeawayaccept(user, function(result){
+		res.render('deliveryman/Acceptlist', {userList: result,username:req.session.username});
+
+		});
+
+});
+router.get('/accept',function(req,res)
+{
+
+
+	var user = {
+  	username 	: req.session.username
+	}
+  userModel.accept(user, function(result){
+		res.render('deliveryman/Acceptlist', {userList: result,username:req.session.username});
 
 		});
 

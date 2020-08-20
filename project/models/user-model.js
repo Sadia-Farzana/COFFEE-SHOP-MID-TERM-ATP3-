@@ -63,12 +63,17 @@ module.exports ={
 		});
 	},
 
-  takeawayaccept:function(id,callback){
+  takeawayaccept:function(user,callback){
 
 
-             var sql = "update status=1,dusername= where id="+id;
-		db.getResults(sql,function(results)
+             var sql = "update takeaway set status='1', dusername='"+user.username+"' where id='"+user.id+"'";
+		db.getResults(sql,function(status)
 		{
+
+			if(status){
+                  var sql = "select * from takeaway where status=1 and dusername='"+user.username+"' order by id desc";
+		   db.getResults(sql,function(results)
+		   {
 
 			if(results.length > 0)
 			{
@@ -82,8 +87,18 @@ module.exports ={
 
 
 
+          }else{
+                callback(false);
+          }
+		});
 
-		var sql = "select * from takeaway where status=1";
+
+
+
+		
+	},
+	  accept:function(user,callback){
+		var sql = "select * from takeaway where dusername='"+user.username+"' order by id desc";
 		db.getResults(sql,function(results)
 		{
 

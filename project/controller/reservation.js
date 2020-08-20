@@ -19,19 +19,19 @@ router.post('/',function(req,res)
    	contactinfo : req.body.contactinfo,
    	message : req.body.message
 
-      
+
    }
 
 /*if( !name || !date || !time || !party || !type || !contactinfo || !message)
       {
          return res.send('Please Fill up All the Fields');
       }*/
- 
+
  userModel.reservation(reservation,function(status)
  {
  	if(status){
-			
-			res.send('Confrimed Reservation');	
+
+			res.send('Confrimed Reservation');
 		}else{
 			res.redirect('/reservation/index');
 		}
