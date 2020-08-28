@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Food Item List page</title>
+  <style>
+  table.center {
+        margin-left: auto;
+        margin-right: auto;
+      }
+  </style>
+
+</head>
+<body>
+	<h1>All Coffee items</h1>
+  <h2>Manager: <%= username %></h2>
+
+    <fieldset>
+    	<table border="1" class="center">
+        <legend>Coffee items</legend>
+    		<tr>
+    			<th>ID</th>
+    			<th>NAME</th>
+    			<th>Price/item</th>
+    			<th>Status</th>
+    			<th>Ingredients</th>
+          <th>Edit/Delete</th>
+
+    		</tr>
+
+    		<% for(var i=0; i < userList.length; i++){ %>
+    		<tr>
+    			<td><%= userList[i].id %></td>
+    			<td><%= userList[i].name %></td>
+          <td><%= userList[i].price %></td>
+    			<td><%= userList[i].status %></td>
+    			<td><%= userList[i].ingredients %></td>
+    			<td><a href="/manager/edit/<%= userList[i].id %>">EDIT</a> |
+    				  <a href="/manager/delete/<%= userList[i].id %>"> DELETE </a></td>
+    		</tr>
+    		<% } %>
+        <tr>
+
+        </tr>
+      </table>
+    </fieldset>
+    <table class="center">
+        <tr>
+          <td><a href="/home">Back</a></td>
+          <td>|</td>
+          <td> <a href="/logout">Logout</a></td>
+        </tr>
+    </table>
+
+</body>
+</html>
